@@ -1,7 +1,11 @@
+# coding: utf-8
 require 'mina/rails'
 require 'mina/git'
 # require 'mina/rbenv'  # for rbenv support. (https://rbenv.org)
 # require 'mina/rvm'    # for rvm support. (https://rvm.io)
+
+# todo 在服务器上将docker的register-mirror改为国内的镜像
+# todo 
 
 # Basic settings:
 #   domain       - The hostname to SSH to.
@@ -9,8 +13,8 @@ require 'mina/git'
 #   repository   - Git repo to clone from. (needed by mina/git)
 #   branch       - Branch name to deploy. (needed by mina/git)
 
-set :application_name, 'b1dong'
-set :domain, 'b1dong.com'
+set :application_name, 'orats'
+set :domain, '52sleep.com'
 set :deploy_to, '/root/orats'
 set :repository, 'https://github.com/lokiiart/orats.git'
 set :branch, 'master'
@@ -40,10 +44,10 @@ end
 task :setup => :environment do
   # command %{rbenv install 2.3.0}
   command %{mkdir -p "/root/orats"}
-  invoke :'git:clone'
-  command 'docker-compose up --build'
-  command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:reset'
-  command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:migrate'
+  # invoke :'git:clone'
+  # command 'docker-compose up --build'
+  # command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:reset'
+  # command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:migrate'
 end
 
 desc "Deploys the current version to the server."
@@ -54,7 +58,8 @@ task :deploy do
     # Put things that will set up an empty directory into a fully set-up
     # instance of your project.
     invoke :'git:clone'
-    command 'docker-compose restart'
+    command 'docker-compose up --build'
+    # command 'docker-compose restart'
     command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:reset'
     command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:migrate'
     # invoke :'deploy:link_shared_paths'
