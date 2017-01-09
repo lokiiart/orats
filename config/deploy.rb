@@ -9,14 +9,14 @@ require 'mina/git'
 #   repository   - Git repo to clone from. (needed by mina/git)
 #   branch       - Branch name to deploy. (needed by mina/git)
 
-set :application_name, 'foobar'
-set :domain, 'foobar.com'
-set :deploy_to, '/var/www/foobar.com'
-set :repository, 'git://...'
+set :application_name, 'b1dong'
+set :domain, 'b1dong.com'
+set :deploy_to, '/root/orats'
+set :repository, 'https://github.com/lokiiart/orats.git'
 set :branch, 'master'
-
+set :term_mode, nil
+set :user, 'root'          # Username in the server to SSH to.
 # Optional settings:
-#   set :user, 'foobar'          # Username in the server to SSH to.
 #   set :port, '30000'           # SSH port number.
 #   set :forward_agent, true     # SSH forward_agent.
 
@@ -37,8 +37,13 @@ end
 
 # Put any custom commands you need to run at setup
 # All paths in `shared_dirs` and `shared_paths` will be created on their own.
-task :setup do
+task :setup => :environment do
   # command %{rbenv install 2.3.0}
+  command %{mkdir -p "/root/orats"}
+  invoke :'git:clone'
+  command 'docker-compose up --build'
+  command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:reset'
+  command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:migrate'
 end
 
 desc "Deploys the current version to the server."
@@ -49,11 +54,14 @@ task :deploy do
     # Put things that will set up an empty directory into a fully set-up
     # instance of your project.
     invoke :'git:clone'
-    invoke :'deploy:link_shared_paths'
-    invoke :'bundle:install'
-    invoke :'rails:db_migrate'
-    invoke :'rails:assets_precompile'
-    invoke :'deploy:cleanup'
+    command 'docker-compose restart'
+    command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:reset'
+    command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:migrate'
+    # invoke :'deploy:link_shared_paths'
+    # invoke :'bundle:install'
+    # invoke :'rails:db_migrate'
+    # invoke :'rails:assets_precompile'
+    # invoke :'deploy:cleanup'
 
     on :launch do
       in_path(fetch(:current_path)) do
