@@ -41,13 +41,20 @@ end
 
 # Put any custom commands you need to run at setup
 # All paths in `shared_dirs` and `shared_paths` will be created on their own.
-task :setup => :environment do
+task :setup do
   # command %{rbenv install 2.3.0}
   command %{mkdir -p "/root/orats"}
   # invoke :'git:clone'
-  # command 'docker-compose up --build'
-  # command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:reset'
+  # command 'docker-compose up --build -d'
+  # command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:reset' # 重置数据库了，不可用
   # command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:migrate'
+end
+
+task :begin do
+  invoke :'git:clone'
+  command 'docker-compose up --build -d'
+  command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:reset' # 重置数据库了，不可用
+  command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:migrate'
 end
 
 desc "Deploys the current version to the server."
@@ -58,9 +65,9 @@ task :deploy do
     # Put things that will set up an empty directory into a fully set-up
     # instance of your project.
     invoke :'git:clone'
-    command 'docker-compose up --build'
+    command 'docker-compose up -d'
     # command 'docker-compose restart'
-    command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:reset'
+    # command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:reset' # 重置数据库了，不可用;没找到更好的解决方案；只能暂时先在这里增删命令
     command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:migrate'
     # invoke :'deploy:link_shared_paths'
     # invoke :'bundle:install'
