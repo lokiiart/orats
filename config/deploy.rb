@@ -65,7 +65,7 @@ task :deploy do
     # Put things that will set up an empty directory into a fully set-up
     # instance of your project.
     invoke :'git:clone'
-    command 'docker-compose up -d'
+    command 'docker-compose up --build -d'
     # command 'docker-compose restart'
     # command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:reset' # 重置数据库了，不可用;没找到更好的解决方案；只能暂时先在这里增删命令
     command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:migrate'

@@ -1,8 +1,8 @@
-server upstream rails_app {
+upstream rails_app {
   server tcp://127.0.0.1:3000;
 }
 
-{
+server {
   server_name m.52sleep.com www.52sleep.com;
   root /var/www/orats/public;
 
