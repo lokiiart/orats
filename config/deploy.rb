@@ -18,6 +18,8 @@ set :branch, 'master'
 set :term_mode, nil
 set :user, 'root' 
 
+
+
 # Optional settings:
 #   set :user, 'foobar'          # Username in the server to SSH to.
 #   set :port, '30000'           # SSH port number.
@@ -72,6 +74,11 @@ task :deploy do
 end
 
 task :update do
+  run :local do
+    command %{git add .}
+    command %{git commit -e}
+    # command %{git push -u origin master}
+  end
   deploy do
     invoke :'git:clone'
     command %{docker-compose restart}
