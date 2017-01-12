@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Page Visitors</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Remoteip</th>
+      <th>Page</th>
+      <th>Referer</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @page_visitors.each do |page_visitor| %>
+      <tr>
+        <td><%= page_visitor.RemoteIP %></td>
+        <td><%= page_visitor.Page %></td>
+        <td><%= page_visitor.Referer %></td>
+        <td><%= link_to 'Show', page_visitor %></td>
+        <td><%= link_to 'Edit', edit_page_visitor_path(page_visitor) %></td>
+        <td><%= link_to 'Destroy', page_visitor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Page Visitor', new_page_visitor_path %>

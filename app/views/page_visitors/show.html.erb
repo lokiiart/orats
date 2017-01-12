@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Remoteip:</strong>
+  <%= @page_visitor.RemoteIP %>
+</p>
+
+<p>
+  <strong>Page:</strong>
+  <%= @page_visitor.Page %>
+</p>
+
+<p>
+  <strong>Referer:</strong>
+  <%= @page_visitor.Referer %>
+</p>
+
+<%= link_to 'Edit', edit_page_visitor_path(@page_visitor) %> |
+<%= link_to 'Back', page_visitors_path %>

@@ -1,0 +1,32 @@
+<%= form_for(page_visitor) do |f| %>
+  <% if page_visitor.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(page_visitor.errors.count, "error") %> prohibited this page_visitor from being saved:</h2>
+
+      <ul>
+      <% page_visitor.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :RemoteIP %>
+    <%= f.text_field :RemoteIP %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Page %>
+    <%= f.text_field :Page %>
+  </div>
+
+  <div class="field">
+    <%= f.label :Referer %>
+    <%= f.text_field :Referer %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

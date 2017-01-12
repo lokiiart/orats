@@ -1,0 +1,1 @@
+json.array! @page_visitors, partial: 'page_visitors/page_visitor', as: :page_visitor

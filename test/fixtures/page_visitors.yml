@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  RemoteIP: MyString
+  Page: MyString
+  Referer: MyString
+
+two:
+  RemoteIP: MyString
+  Page: MyString
+  Referer: MyString

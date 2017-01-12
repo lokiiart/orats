@@ -1,0 +1,2 @@
+class PageVisitor < ApplicationRecord
+end
