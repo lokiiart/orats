@@ -73,19 +73,21 @@ task :deploy do
   # run(:local){ say 'done' }
 end
 
-task :autoupdate do
+task :update do
+  on :auto do
+    run :local do
+      command %{git add .}
+      command %{git commit -m "`date`"}
+    end
+  end
   run :local do
-    command %{git add .}
-    command %{git commit -m "`date`"}
     command %{git push -u origin master}
   end
+  invoke :'git:ensure_pushed'
   deploy do
     invoke :'git:clone'
     command %{docker-compose restart}
   end
-end
-
-task :update do
 end
 
 # For help in making your deploy script, see the Mina documentation:
