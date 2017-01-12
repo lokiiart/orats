@@ -76,7 +76,7 @@ end
 task :update do
   run :local do
     command %{git add .}
-    command %{git commit -e}
+    command %{git commit -m "`date`"}
     # command %{git push -u origin master}
   end
   deploy do
