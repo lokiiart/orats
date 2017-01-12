@@ -73,11 +73,11 @@ task :deploy do
   # run(:local){ say 'done' }
 end
 
-task :update do
+task :autoupdate do
   run :local do
     command %{git add .}
     command %{git commit -m "`date`"}
-    # command %{git push -u origin master}
+    command %{git push -u origin master}
   end
   deploy do
     invoke :'git:clone'
@@ -85,26 +85,7 @@ task :update do
   end
 end
 
-task :resartnginx do
-  invoke :'git:clone'
-  command 'docker-compose restart --user "$(id -u):$(id -g)" nginx' 
-end
-
-task :restartwebsite do
-  invoke :'git:clone'
-  command 'docker-compose restart --user "$(id -u):$(id -g)" website' 
-end
-
-task :restartgem do
-  invoke :'git:clone'
-  command 'docker-compose exec --user "$(id -u):$(id -g)" website bundle install' 
-  command 'docker-compose restart --user "$(id -u):$(id -g)" website' 
-end
-
-task :restartdb do
-  invoke :'git:clone'
-  command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:reset' # 重置数据库了，不可用
-  command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:migrate'
+task :update do
 end
 
 # For help in making your deploy script, see the Mina documentation:
