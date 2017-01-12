@@ -54,9 +54,10 @@ task :deploy do
     # Put things that will set up an empty directory into a fully set-up
     # instance of your project.
     invoke :'git:clone'
-    command 'docker-compose up --build  -d'
-    command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:reset' # 重置数据库了，不可用
-    command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:migrate'
+    command 'docker-compose restart --user "$(id -u):$(id -g)" website' 
+    # command 'docker-compose up --build  -d'
+    # command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:reset' # 重置数据库了，不可用
+    # command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:migrate'
 
     on :launch do
       in_path(fetch(:current_path)) do
@@ -76,18 +77,18 @@ end
 
 task :resartnginx do
   invoke :'git:clone'
-  command 'docker-compose restart --user "$(id -u):$(id -g)" nginx' # 重置数据库了，不可用
+  command 'docker-compose restart --user "$(id -u):$(id -g)" nginx' 
 end
 
 task :restartwebsite do
   invoke :'git:clone'
-  command 'docker-compose restart --user "$(id -u):$(id -g)" website' # 重置数据库了，不可用
+  command 'docker-compose restart --user "$(id -u):$(id -g)" website' 
 end
 
 task :restartgem do
   invoke :'git:clone'
-  command 'docker-compose exec --user "$(id -u):$(id -g)" website bundle install' # 重置数据库了，不可用
-  command 'docker-compose restart --user "$(id -u):$(id -g)" website' # 重置数据库了，不可用
+  command 'docker-compose exec --user "$(id -u):$(id -g)" website bundle install' 
+  command 'docker-compose restart --user "$(id -u):$(id -g)" website' 
 end
 
 task :restartdb do
