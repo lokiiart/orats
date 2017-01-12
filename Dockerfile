@@ -94,7 +94,7 @@ VOLUME ["$INSTALL_PATH/public"]
 # This sets up a volume so that nginx can read in the assets from
 # the Rails Docker image without having to copy them to the Docker host.
 
-CMD puma -C config/puma.rb
+CMD RACK_ENV=production puma -C config/puma.rb 
 # This is the command that's going to be ran by default if you run the
 # Docker image without any arguments.
 #

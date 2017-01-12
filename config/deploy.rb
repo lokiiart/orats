@@ -4,9 +4,6 @@ require 'mina/git'
 # require 'mina/rbenv'  # for rbenv support. (https://rbenv.org)
 # require 'mina/rvm'    # for rvm support. (https://rvm.io)
 
-# todo 在服务器上将docker的register-mirror改为国内的镜像
-# todo 
-
 # Basic settings:
 #   domain       - The hostname to SSH to.
 #   deploy_to    - Path to deploy into.
@@ -14,13 +11,15 @@ require 'mina/git'
 #   branch       - Branch name to deploy. (needed by mina/git)
 
 set :application_name, 'orats'
-set :domain, '52sleep.com'
+set :domain, 'b1dong.com'
 set :deploy_to, '/root/orats'
 set :repository, 'https://github.com/lokiiart/orats.git'
 set :branch, 'master'
 set :term_mode, nil
-set :user, 'root'          # Username in the server to SSH to.
+set :user, 'root' 
+
 # Optional settings:
+#   set :user, 'foobar'          # Username in the server to SSH to.
 #   set :port, '30000'           # SSH port number.
 #   set :forward_agent, true     # SSH forward_agent.
 
@@ -44,17 +43,7 @@ end
 task :setup do
   # command %{rbenv install 2.3.0}
   command %{mkdir -p "/root/orats"}
-  # invoke :'git:clone'
-  # command 'docker-compose up --build -d'
-  # command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:reset' # 重置数据库了，不可用
-  # command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:migrate'
-end
 
-task :begin do
-  invoke :'git:clone'
-  command 'docker-compose up --build -d'
-  command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:reset' # 重置数据库了，不可用
-  command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:migrate'
 end
 
 desc "Deploys the current version to the server."
@@ -65,15 +54,9 @@ task :deploy do
     # Put things that will set up an empty directory into a fully set-up
     # instance of your project.
     invoke :'git:clone'
-    command 'docker-compose up --build -d'
-    # command 'docker-compose restart'
-    # command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:reset' # 重置数据库了，不可用;没找到更好的解决方案；只能暂时先在这里增删命令
+    command 'docker-compose up  -d'
+    command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:reset' # 重置数据库了，不可用
     command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:migrate'
-    # invoke :'deploy:link_shared_paths'
-    # invoke :'bundle:install'
-    # invoke :'rails:db_migrate'
-    # invoke :'rails:assets_precompile'
-    # invoke :'deploy:cleanup'
 
     on :launch do
       in_path(fetch(:current_path)) do

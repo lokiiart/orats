@@ -1,25 +1,55 @@
-upstream rails_app {
-  server tcp://127.0.0.1:3000;
+#server {
+#  listen 0.0.0.0:80;
+#  server_name _;
+#  #root /var/www/orats/public;
+#
+#  #try_files $uri/index.html $uri @rails_app;
+#
+#  location / {
+#    #proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+#    #proxy_set_header Host $http_host;
+#
+#    proxy_pass http://172.18.0.5:3000;
+#  }
+#
+#}
+upstream app {
+    # Path to Puma SOCK file, as defined previously
+    server orats_website_1:3000 fail_timeout=0;
 }
 
 server {
-  server_name m.52sleep.com www.52sleep.com;
-  root /var/www/orats/public;
+    listen 80;
+    server_name _;
 
-  try_files $uri/index.html $uri @rails_app;
+    root /var/www/orats/public;
 
-  location @rails_app {
-    proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    proxy_set_header Host $http_host;
-    proxy_redirect off;
+#    try_files $uri/index.html $uri @app;
 
-    proxy_pass http://rails_app;
-  }
 
-  error_page 500 504 /500.html;
-  error_page 502 /502.html;
-  error_page 503 /503.html;
+#    location @app {
+     location / {
+        proxy_pass http://app;
+        proxy_set_header Host $http_host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_redirect off;
+    }
+    
 
-  client_max_body_size 4G;
-  keepalive_timeout 10;
+# 没办法设置静态资源缓存真是出了鬼了
+#    location ~ ^/assets/ {
+#        expires 1y;
+#        add_header Cache-Control public;
+#
+#        add_header ETag "";
+#    }
+
+#    location ~* \.(gif|jpg|jpeg|png|css|js|ico)$ {
+#    }
+
+    error_page 404 /404.html;
+    error_page 500 502 503 504 /500.html;
+    client_max_body_size 4G;
+    keepalive_timeout 10;
 }
