@@ -85,7 +85,8 @@ task :autoupdate do
   invoke :'git:ensure_pushed'
   deploy do
     invoke :'git:clone'
-    command %{docker-compose restart}
+    command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:migrate'
+    command %{docker-compose up -d}
   end
 end
 
@@ -96,7 +97,8 @@ task :update do
   invoke :'git:ensure_pushed'
   deploy do
     invoke :'git:clone'
-    command %{docker-compose restart}
+    command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:migrate'
+    command %{docker-compose up -d}
   end
 end
 # For help in making your deploy script, see the Mina documentation:

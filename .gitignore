@@ -20,3 +20,6 @@
 /vendor/bundle
 /public/assets/*
 # .env
+.idea/
+lib/capistrano/
+public/assets/
