@@ -54,7 +54,7 @@ task :deploy do
     # Put things that will set up an empty directory into a fully set-up
     # instance of your project.
     invoke :'git:clone'
-    command 'docker-compose restart --user "$(id -u):$(id -g)" website' 
+    command 'docker-compose restart'
     # command 'docker-compose up --build  -d'
     # command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:reset' # 重置数据库了，不可用
     # command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:migrate'
@@ -72,7 +72,10 @@ task :deploy do
 end
 
 task :update do
-  invoke :'git:clone'
+  deploy do
+    invoke :'git:clone'
+    command %{docker-compose restart}
+  end
 end
 
 task :resartnginx do

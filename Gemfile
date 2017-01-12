@@ -46,6 +46,8 @@ gem 'bootstrap-sass', '~> 3.3'
 # Use Font Awesome Rails for Font Awesome icons
 gem 'font-awesome-rails', '~> 4.7'
 
+gem 'dotenv-rails'
+
 group :development, :test do
   # Call 'byebug' anywhere in your code to drop into a debugger console
   gem 'byebug', platform: :mri
@@ -55,9 +57,7 @@ group :development do
   # Enable a debug toolbar to help profile your application
   gem 'rack-mini-profiler', '~> 0.10'
   # 本地环境加载环境变量.env
-  gem 'dotenv-rails'
 
-  gem "capistrano" , "~>3.7"
 
   # Access an IRB console on exception pages or by using <%= console %>
   gem 'web-console', '~> 3.3.0'
