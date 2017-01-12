@@ -45,7 +45,12 @@ end
 task :setup do
   # command %{rbenv install 2.3.0}
   command %{mkdir -p "/root/orats"}
-
+  deploy do
+    invoke :'git:clone'
+    command 'docker-compose up --build  -d'
+    command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:reset' # 重置数据库了，不要乱用
+    command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:migrate'
+  end
 end
 
 desc "Deploys the current version to the server."
@@ -56,31 +61,25 @@ task :deploy do
     # Put things that will set up an empty directory into a fully set-up
     # instance of your project.
     invoke :'git:clone'
-    command 'docker-compose restart'
-    # command 'docker-compose up --build  -d'
-    # command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:reset' # 重置数据库了，不可用
-    # command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:migrate'
+    command 'docker-compose up --build  -d'
+    command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:migrate'
 
-    on :launch do
-      in_path(fetch(:current_path)) do
-        command %{mkdir -p tmp/}
-        command %{touch tmp/restart.txt}
-      end
-    end
+    # on :launch do
+    #   in_path(fetch(:current_path)) do
+    #     command %{mkdir -p tmp/}
+    #     command %{touch tmp/restart.txt}
+    #   end
+    # end
   end
 
   # you can use `run :local` to run tasks on local machine before of after the deploy scripts
   # run(:local){ say 'done' }
 end
 
-task :update do
-  on :auto do
-    run :local do
-      command %{git add .}
-      command %{git commit -m "`date`"}
-    end
-  end
+task :autoupdate do
   run :local do
+    command %{git add .}
+    command %{git commit -m "`date`"}
     command %{git push -u origin master}
   end
   invoke :'git:ensure_pushed'
@@ -90,6 +89,16 @@ task :update do
   end
 end
 
+task :update do
+  run :local do
+    command %{git push -u origin master}
+  end
+  invoke :'git:ensure_pushed'
+  deploy do
+    invoke :'git:clone'
+    command %{docker-compose restart}
+  end
+end
 # For help in making your deploy script, see the Mina documentation:
 #
 #  - https://github.com/mina-deploy/mina/tree/master/docs
