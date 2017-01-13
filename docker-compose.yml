@@ -12,6 +12,8 @@ services:
       - '5432'
     volumes:
       - 'postgres:/var/lib/postgresql/data'
+    restart:
+      - 'always'
 
   redis:
     image: 'redis:3.2-alpine'
@@ -22,6 +24,8 @@ services:
       - '6379'
     volumes:
       - 'redis:/var/lib/redis/data'
+    restart:
+      - 'always'
 
   website:
     depends_on:
@@ -37,6 +41,8 @@ services:
       - '.:/orats'
     env_file:
       - '.env'
+    restart:
+      - 'always'
 
   sidekiq:
     depends_on:
@@ -48,6 +54,8 @@ services:
       - '.:/orats'
     env_file:
       - '.env'
+    restart:
+      - 'always'
 
   cable:
     depends_on:
@@ -62,6 +70,8 @@ services:
       - '.:/orats'
     env_file:
       - '.env'
+    restart:
+      - 'always'
 
   nginx:
     depends_on:
@@ -73,6 +83,8 @@ services:
       - '.:/var/www/orats'
     ports:
       - "80:80"
+    restart:
+      - 'always'
 
 
 volumes:

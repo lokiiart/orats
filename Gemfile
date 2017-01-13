@@ -48,6 +48,9 @@ gem 'font-awesome-rails', '~> 4.7'
 
 gem 'dotenv-rails'
 
+gem 'sinatra', '~> 2.0.0.beta2'
+gem 'split', require: 'split/dashboard'
+
 group :development, :test do
   # Call 'byebug' anywhere in your code to drop into a debugger console
   gem 'byebug', platform: :mri
