@@ -1,0 +1,1 @@
+json.partial! "virtual_orders/virtual_order", virtual_order: @virtual_order

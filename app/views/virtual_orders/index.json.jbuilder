@@ -1,0 +1,1 @@
+json.array! @virtual_orders, partial: 'virtual_orders/virtual_order', as: :virtual_order

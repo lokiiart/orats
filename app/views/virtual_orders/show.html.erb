@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @virtual_order.name %>
+</p>
+
+<p>
+  <strong>Phone:</strong>
+  <%= @virtual_order.phone %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @virtual_order.address %>
+</p>
+
+<p>
+  <strong>Product count:</strong>
+  <%= @virtual_order.product_count %>
+</p>
+
+<p>
+  <strong>Payment:</strong>
+  <%= @virtual_order.payment %>
+</p>
+
+<%= link_to 'Edit', edit_virtual_order_path(@virtual_order) %> |
+<%= link_to 'Back', virtual_orders_path %>

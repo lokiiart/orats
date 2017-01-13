@@ -5,5 +5,7 @@ class PagesController < ApplicationController
     @page_visitor.Referer = request.referer
     @page_visitor.Page = "baidu_examine"
     @page_visitor.save
+    @virtual_order = VirtualOrder.new
+    render layout: false
   end
 end
