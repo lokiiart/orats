@@ -1,56 +1,7 @@
-<!doctype html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>隆回县顺道电子商务有限公司</title>
-  <%= stylesheet_link_tag "baidu_examine", media: "all" %>
-  <style>
-    html,body {
-      margin:0;
-      padding:0;
-    }
-
-    h1,h2 {
-      font-size: 1.5rem;
-      padding-left:0.5rem;
-      margin:0;
-      color: #fe4400;
-    }
-
-
-    #wrapper {
-      width: 100%;
-      max-width:640px;
-      margin: 0 auto;
-      position: relative;
-    }
-    img {
-      width:100%;
-    }
-      #order_form {
-        background-color: #2d4d68;
-        margin-top:-5px;
-      }
-
-      #order_form form{
-        color: white;
-        margin-left:5rem;
-      }
-  </style>
-</head>
-<body>
-<div id="wrapper">
-  <h1>隆回县顺道电子商务有限公司</h1>
-  <%= image_tag "pages/baidu_examine_bg.jpg" %>
-  <div id="order_form">
-    <div class="page-header">
-      <h2>马上订购</h2>
-    </div>
-    <%= render 'virtual_orders/form', virtual_order: @virtual_order %>
+<%= image_tag "pages/baidu_examine_bg.jpg" %>
+<div id="order_form">
+  <div class="page-header">
+    <h2>马上订购:</h2>
   </div>
-  <%= image_tag "pages/baidu_examine_copyright.jpg" %>
+  <%= render 'virtual_orders/form', virtual_order: @virtual_order %>
 </div>
-</body>
-</html>

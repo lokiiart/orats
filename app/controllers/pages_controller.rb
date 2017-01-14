@@ -21,8 +21,22 @@ class PagesController < ApplicationController
     @page_visitor.Page = @page
     @page_visitor.save
     @virtual_order = VirtualOrder.new
-    render layout: false, template: @page
+    if @page == 'pages/home'
+      render layout: 'baidu_layout', template: @page
+    else
+      render layout: false, template: @page
+    end
+
   end
+
+  def company
+    render layout: 'baidu_layout'
+  end
+
+  def contact
+    render layout: 'baidu_layout'
+  end
+
   def copy_succeed
     ab_finished :flow_enter
     render plain: "OK"
