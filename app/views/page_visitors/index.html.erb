@@ -8,16 +8,18 @@
       <th>Remoteip</th>
       <th>Page</th>
       <th>Referer</th>
-      <th colspan="3"></th>
+      <th>UserAgent</th>
+      <th colspan="3">操作</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @page_visitors.each do |page_visitor| %>
+    <% @page_visitors.reverse_each do |page_visitor| %>
       <tr>
         <td><%= page_visitor.RemoteIP %></td>
         <td><%= page_visitor.Page %></td>
         <td><%= page_visitor.Referer %></td>
+        <td><%= page_visitor.UserAgent %></td>
         <td><%= link_to 'Show', page_visitor %></td>
         <td><%= link_to 'Edit', edit_page_visitor_path(page_visitor) %></td>
         <td><%= link_to 'Destroy', page_visitor, method: :delete, data: { confirm: 'Are you sure?' } %></td>

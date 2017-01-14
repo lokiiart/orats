@@ -69,6 +69,6 @@ class PageVisitorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def page_visitor_params
-      params.require(:page_visitor).permit(:RemoteIP, :Page, :Referer)
+      params.require(:page_visitor).permit(:RemoteIP, :Page, :Referer, :UserAgent)
     end
 end

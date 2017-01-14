@@ -1,13 +1,23 @@
 class PagesController < ApplicationController
   def home
-    if !request.referer
+    @page_visitor = PageVisitor.new
+    @page_visitor.RemoteIP = request.remote_ip
+    @page_visitor.Referer = request.referer
+    @page_visitor.UserAgent = request.user_agent
+
+
+    case @page_visitor.UserAgent
+      when /iPad|iPhone|Linux|Android|iPad/i
+        @user_agent = :mobile
+      else
+        @user_agent = :pc
+    end
+    if ((@page_visitor.Referer) && (@user_agent == :mobile))
       @page = ab_test(:flow_enter, 'pages/zhihu_flow_enter', 'pages/baidu_flow_enter')
     else
       @page = 'pages/home'
     end
-    @page_visitor = PageVisitor.new
-    @page_visitor.RemoteIP = request.remote_ip
-    @page_visitor.Referer = request.referer
+
     @page_visitor.Page = @page
     @page_visitor.save
     @virtual_order = VirtualOrder.new
