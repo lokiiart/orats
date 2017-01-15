@@ -59,7 +59,6 @@ end
 group :development do
   # Enable a debug toolbar to help profile your application
   gem 'rack-mini-profiler', '~> 0.10'
-  # 本地环境加载环境变量.env
 
 
   # Access an IRB console on exception pages or by using <%= console %>

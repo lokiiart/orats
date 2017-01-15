@@ -23,3 +23,5 @@
 .idea/
 lib/capistrano/
 public/assets/
+
+/**/.DS_Store
