@@ -85,8 +85,9 @@ task :autoupdate do
   invoke :'git:ensure_pushed'
   deploy do
     invoke :'git:clone'
+    command 'docker-compose exec --user "$(id -u):$(id -g)" website rails assets:precompile'
     command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:migrate'
-    command %{docker-compose up -d}
+    command %{docker-compose up --build -d}
   end
 end
 
@@ -97,10 +98,9 @@ task :update do
   invoke :'git:ensure_pushed'
   deploy do
     invoke :'git:clone'
-    command 'docker-compose exec --user "$(id -u):$(id -g)" website bundle install'
     command 'docker-compose exec --user "$(id -u):$(id -g)" website rails assets:precompile'
     command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:migrate'
-    command %{docker-compose up -d}
+    command %{docker-compose up --build -d}
   end
 end
 # For help in making your deploy script, see the Mina documentation:
