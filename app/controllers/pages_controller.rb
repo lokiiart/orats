@@ -38,6 +38,10 @@ class PagesController < ApplicationController
     render layout: 'baidu_layout'
   end
 
+  def products
+    render layout: 'baidu_layout'
+  end
+
   def copy_succeed
     ab_finished :flow_enter
     render plain: "OK"

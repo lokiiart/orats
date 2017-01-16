@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   mount Split::Dashboard, at: 'split'
   get 'pages/contact'
   get 'pages/company'
+  get 'pages/products'
   get '/dashboard', to: 'pages#dashboard'
   get    '/login',   to: 'sessions#new'
   post   '/login',   to: 'sessions#create'
