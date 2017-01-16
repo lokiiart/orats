@@ -1,3 +1,4 @@
 production: "redis://:yourpassword@redis:6379/0"
 development: redis://localhost:6379
+test: redis://localhost:6379
 

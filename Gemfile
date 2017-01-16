@@ -4,6 +4,7 @@ source 'https://gems.ruby-china.org'
 # Looking to use the Edge version? gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.0.1'
 
+gem 'bcrypt'
 # Use Puma as the app server
 gem 'puma', '~> 3.0'
 
