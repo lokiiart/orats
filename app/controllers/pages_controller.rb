@@ -1,4 +1,5 @@
 class PagesController < ApplicationController
+  skip_before_action  :logged_in_user, except: :dashboard
   def home
     @page_visitor = PageVisitor.new
     @page_visitor.RemoteIP = request.remote_ip
@@ -40,5 +41,9 @@ class PagesController < ApplicationController
   def copy_succeed
     ab_finished :flow_enter
     render plain: "OK"
+  end
+
+  def dashboard
+    render layout: 'application', template: 'pages/dashborad'
   end
 end

@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'sessions/new'
+
   get 'users/new'
 
   resources :virtual_orders
@@ -6,5 +8,9 @@ Rails.application.routes.draw do
   mount Split::Dashboard, at: 'split'
   get 'pages/contact'
   get 'pages/company'
+  get '/dashboard', to: 'pages#dashboard'
+  get    '/login',   to: 'sessions#new'
+  post   '/login',   to: 'sessions#create'
+  delete '/logout',  to: 'sessions#destroy'
   root 'pages#home'
 end
