@@ -76,7 +76,7 @@ task :deploy do
   # run(:local){ say 'done' }
 end
 
-task :autoupdate do
+task :auto-update do
   run :local do
     command %{git add .}
     command %{git commit -m "`date`"}
@@ -93,9 +93,9 @@ task :autoupdate do
 end
 
 task :update do
-  run :local do
-    command %{git push -u origin master}
-  end
+  # run :local do
+  #   command %{git push -u origin master}
+  # end
   invoke :'git:ensure_pushed'
   deploy do
     invoke :'git:clone'
