@@ -1,7 +1,77 @@
-<%= image_tag "pages/baidu_examine_bg.jpg" %>
-<div id="order_form">
-  <div class="page-header">
-    <h2>马上订购:</h2>
+
+<section class="no-pad-bottom no-pad-top projects-gallery">
+
+  <div class="projects-wrapper clearfix">
+
+    <div class="projects-container">
+
+      <div class="col-md-4 col-sm-6 no-pad project print image-holder">
+        <div class="background-image-holder">
+          <img class="background-image" alt="Background Image" src="img/project1.jpg">
+        </div>
+        <div class="hover-state">
+          <div class="align-vertical">
+            <h3 class="text-white">侧面</h3>
+          </div>
+        </div>
+      </div><!--end of individual project-->
+
+      <div class="col-md-4 col-sm-6 no-pad project branding image-holder">
+        <div class="background-image-holder">
+          <img class="background-image" alt="Background Image" src="img/project4.jpg">
+        </div>
+        <div class="hover-state">
+          <div class="align-vertical">
+            <h3 class="text-white">正面</h3>
+          </div>
+        </div>
+      </div><!--end of individual project-->
+
+      <div class="col-md-4 col-sm-6 no-pad project print image-holder">
+        <div class="background-image-holder">
+          <img class="background-image" alt="Background Image" src="img/project6.jpg">
+        </div>
+        <div class="hover-state">
+          <div class="align-vertical">
+            <h3 class="text-white">反面</h3>
+          </div>
+        </div>
+      </div><!--end of individual project-->
+
+    </div><!--end of projects-container-->
+
+  </div><!--end of projects wrapper-->
+
+</section>
+<section class="duplicatable-content">
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-4">
+        <div class="feature">
+          <h5>宽裤腰</h5>
+          <p>
+            高弹力宽边腰带，三线加固，久穿不变形
+          </p>
+        </div>
+      </div><!--end 4 col-->
+
+      <div class="col-sm-4">
+        <div class="feature">
+          <h5>黄金矿物石涂点</h5>
+          <p>
+            释放健康磁石能量
+          </p>
+        </div>
+      </div><!--end 4 col-->
+
+      <div class="col-sm-4">
+        <div class="feature">
+          <h5>莫代尔面料</h5>
+          <p>
+            柔软 亲肤 健康 舒适
+          </p>
+        </div>
+      </div><!--end 4 col-->
+    </div><!--end of row-->
   </div>
-  <%= render 'virtual_orders/form', virtual_order: @virtual_order %>
-</div>
+</section>

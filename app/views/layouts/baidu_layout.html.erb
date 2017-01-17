@@ -1,63 +1,196 @@
-<!doctype html>
-<html lang="zh-CN">
+
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>隆回县顺道电子商务有限公司</title>
-  <%= stylesheet_link_tag "baidu_examine", media: "all" %>
-  <style>
-    html,body {
-      margin:0;
-      padding:0;
-    }
+  <meta charset="utf-8">
 
-    h1,h2 {
-      font-size: 1.5rem;
-      padding-left:0.5rem;
-      margin:0;
-      background-color: #fe4400;
-      color:#fff;
-    }
-
-    h2 {
-      padding-left:3rem;
-      width: 19rem;
-      margin-bottom:1rem;
-    }
-
-
-    #wrapper {
-      width: 100%;
-      max-width:640px;
-      margin: 0 auto;
-      position: relative;
-    }
-    img {
-      width:100%;
-    }
-    #order_form {
-      background-color: #2d4d68;
-      margin-top:-5px;
-    }
-
-    #order_form form{
-      color: white;
-      margin-left:5rem;
-    }
-  </style>
+  <title>Pivot | Home</title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <link href="/css/flexslider.min.css" rel="stylesheet" type="text/css" media="all"/>
+  <link href="/css/line-icons.min.css" rel="stylesheet" type="text/css" media="all"/>
+  <link href="/css/elegant-icons.min.css" rel="stylesheet" type="text/css" media="all"/>
+  <link href="/css/lightbox.min.css" rel="stylesheet" type="text/css" media="all"/>
+  <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css" media="all"/>
+  <link href="/css/theme.css" rel="stylesheet" type="text/css" media="all"/>
+  <link href="/css/custom.css" rel="stylesheet" type="text/css" media="all"/>
+  <!--[if gte IE 9]>
+    <link rel="stylesheet" type="text/css" href="/css/ie9.css" />
+<![endif]-->
+  <!--<link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,400,300,600,700%7CRaleway:700' rel='stylesheet' type='text/css'>-->
+  <script src="/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 </head>
 <body>
-<div id="wrapper">
-  <ul class="nav nav-pills nav-justified">
-    <li><%=	 link_to '首页', root_path %></li>
-    <li><%=	 link_to '产品中心', pages_products_path %></li>
-    <li><%=	 link_to '公司简介', pages_company_path %></li>
-    <li><%=	 link_to '联系我们', pages_contact_path %></li>
-  </ul>
-  <h1>隆回县顺道电子商务有限公司</h1>
-  <%= yield %>
-  <%= image_tag "pages/baidu_examine_copyright.jpg" %>
+<div class="loader">
+  <div class="spinner">
+    <div class="double-bounce1"></div>
+    <div class="double-bounce2"></div>
+  </div>
 </div>
+
+<div class="nav-container">
+  <nav class="top-bar overlay-bar">
+    <div class="container">
+
+      <div class="row utility-menu">
+        <div class="col-sm-12">
+          <div class="utility-inner clearfix">
+            <span class="alt-font"><i class="icon icon_pin"></i> 0731-89908814</span>
+            <span class="alt-font"><i class="icon icon_mail"></i>联系人：罗先生</span>
+          </div>
+        </div>
+      </div><!--end of row-->
+
+
+      <div class="row nav-menu">
+        <div class="col-sm-5 col-md-4 columns">
+          <%= link_to  root_path do %>
+          <h2 class="logo logo-light" style="color: white">隆回县顺道电子商务有限公司</h2>
+          <h2 class="logo logo-dark">隆回县顺道电子商务有限公司</h2>
+          <% end %>
+        </div>
+
+        <div class="col-sm-7 col-md-8 columns">
+          <ul class="menu">
+            <li><%= link_to '首页', root_path %></li>
+            <li><%= link_to '产品介绍', pages_products_path %></li>
+            <li><%= link_to '公司简介', pages_company_path %></li>
+            <li><%= link_to '联系我们', pages_contact_path %></li>
+          </ul>
+
+        </div>
+      </div><!--end of row-->
+
+      <div class="mobile-toggle">
+        <i class="icon icon_menu"></i>
+      </div>
+
+    </div><!--end of container-->
+  </nav>
+</div>
+<div class="main-container">
+  <section class="hero-slider">
+    <ul class="slides">
+
+      <li class="overlay hover-background">
+        <div class="background-image-holder">
+          <img class="background-image" alt="Background Image" src="/img/layer1.jpg" />
+        </div>
+
+        <!--<div class="foreground-image-holder layer-1">-->
+          <!--<img class="background-image" alt="Background Image" src="/img/layer2.png" />-->
+        <!--</div>-->
+
+        <!--<div class="foreground-image-holder layer-2">-->
+          <!--<img class="background-image" alt="Background Image" src="/img/layer3.png" />-->
+        <!--</div>-->
+
+        <div class="container align-vertical">
+          <div class="row">
+            <div class="col-md-6 col-sm-9">
+              <h1 class="text-white">你需要一条怎样的内裤？</h1>
+              <h2 class="text-white">材质优良、环保健康、剪裁合理、透气舒适、抑菌除湿？</h2>
+              <h2 class="text-white">以上只是好内裤的标配</h2>
+              <button class="btn btn-primary btn-white">"大"有可为，方显男人本色</button>
+            </div>
+          </div>
+        </div><!--end of container-->
+      </li><!--end of individual slide-->
+
+      <li class="overlay">
+        <div class="background-image-holder parallax-background">
+          <img class="background-image" alt="Background Image" src="/img/hero15.jpg">
+        </div>
+
+        <div class="container align-vertical">
+          <div class="row">
+            <div class="col-md-6 col-sm-9">
+              <h2 class="text-white">LET WOMEN<br /> LOVE YOU MORE</h2>
+              <h2 class="text-white" style="width:12rem;border: 2px solid yellowgreen">爱从来都不是难事</h2>
+              <p class="text-white">你知我深浅，我知你长度</p>
+              <p class="text-white">而你和我之间，只相距18CM距离</p>
+            </div>
+          </div>
+        </div><!--end of container-->
+      </li><!--end of individual slide-->
+
+      <!--end of individual slide-->
+
+      <!--<li class="overlay">-->
+        <!--<div class="background-image-holder parallax-background">-->
+          <!--<img class="background-image" alt="Background Image" src="/img/hero7.jpg">-->
+        <!--</div>-->
+
+        <!--<div class="container align-vertical">-->
+          <!--<div class="row">-->
+            <!--<div class="col-md-6 col-sm-9">-->
+              <!--<h1 class="text-white">Get ready for the launch of our amazing new template Pivot, You will be awed.</h1>-->
+              <!--<a target="_blank" href="http://www.mediumra.re/pivot/variant/builder.html" class="btn btn-primary btn-white">Customize Pivot</a>-->
+              <!--<a href="#" class="btn btn-primary btn-filled">Purchase Pivot</a>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>&lt;!&ndash;end of container&ndash;&gt;-->
+      <!--</li>&lt;!&ndash;end of individual slide&ndash;&gt;-->
+
+      <!--<li class="overlay">-->
+        <!--<div class="background-image-holder parallax-background">-->
+          <!--<img class="background-image" alt="Background Image" src="/img/hero9.jpg">-->
+        <!--</div>-->
+
+        <!--<div class="container align-vertical">-->
+          <!--<div class="row">-->
+            <!--<div class="col-md-6 col-sm-9">-->
+              <!--<h1 class="text-white">Get ready for the launch of our amazing new template Pivot, You will be awed.</h1>-->
+              <!--<a target="_blank" href="http://www.mediumra.re/pivot/variant/builder.html" class="btn btn-primary btn-white">Customize Pivot</a>-->
+              <!--<a href="#" class="btn btn-primary btn-filled">Purchase Pivot</a>-->
+            <!--</div>-->
+          <!--</div>-->
+        <!--</div>&lt;!&ndash;end of container&ndash;&gt;-->
+      <!--</li>&lt;!&ndash;end of individual slide&ndash;&gt;-->
+    </ul>
+  </section>
+  <%= yield %>
+</div>
+<div class="footer-container">
+  <footer class="bg-primary short-2">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <span class="text-white">© 2017- 隆回县顺道电子商务有限公司.</span>
+          <span class="text-white">联系人：罗先生</span>
+          <span class="text-white">0731-89908814</span>
+          <span class="text-white">湖南省邵阳市隆回县桃洪镇桃洪西路（怡然花园内）</span>
+        </div>
+      </div><!--end for row-->
+    </div><!--end of container-->
+
+    <div class="contact-action">
+      <div class="align-vertical">
+        <i class="icon text-white icon_mail"></i>
+        <%= link_to pages_contact_path, class: "text-white" do %>
+        <span class="text-white">联系我们<i class="icon arrow_right"></i></span>
+        <% end %>
+      </div>
+    </div>
+  </footer>
+</div>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/jquery.plugin.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/jquery.flexslider-min.js"></script>
+<script src="/js/smooth-scroll.min.js"></script>
+<script src="/js/skrollr.min.js"></script>
+<script src="/js/spectragram.min.js"></script>
+<script src="/js/scrollReveal.min.js"></script>
+<script src="/js/isotope.min.js"></script>
+<!--<script src="js/twitterFetcher_v10_min.js"></script>-->
+<script src="/js/lightbox.min.js"></script>
+<script src="/js/jquery.countdown.min.js"></script>
+<script src="/js/scripts.js"></script>
 </body>
 </html>
