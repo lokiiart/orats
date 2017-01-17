@@ -38,17 +38,24 @@ server {
     }
 
     location ~ ^/img/|^/css/|^/js/|^/fonts/ {
-    root /var/www/orats/public;
+        root /var/www/orats/public;
+        expires 1y;
+        add_header Cache-Control public;
+        add_header Last-Modified "";
+        add_header ETag "";
+        break;
     }
     
 
 # 没办法设置静态资源缓存真是出了鬼了
-#    location ~ ^/assets/ {
-#        expires 1y;
-#        add_header Cache-Control public;
-#
-#        add_header ETag "";
-#    }
+    location ~ ^/assets/ {
+        root /var/www/orats/public;
+        expires 1y;
+        add_header Cache-Control public;
+        add_header Last-Modified "";
+        add_header ETag "";
+        break;
+    }
 
 #    location ~* \.(gif|jpg|jpeg|png|css|js|ico)$ {
 #    }
