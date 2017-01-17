@@ -16,6 +16,8 @@ class PagesController < ApplicationController
     case @page_visitor.Referer
       when /localhost|b1dong/i
         @user_referer = :none
+      when nil
+        @user_referer = :none
       else
         @user_referer = :yes
     end
