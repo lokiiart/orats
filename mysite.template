@@ -29,6 +29,7 @@ server {
 
 #    location @app {
      location / {
+        root /var/www/orats/public;
         proxy_pass http://app;
         proxy_set_header Host $http_host;
         proxy_set_header X-Real-IP $remote_addr;

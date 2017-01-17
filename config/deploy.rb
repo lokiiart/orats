@@ -76,7 +76,7 @@ task :deploy do
   # run(:local){ say 'done' }
 end
 
-task :auto-update do
+task :auto_update do
   run :local do
     command %{git add .}
     command %{git commit -m "`date`"}
