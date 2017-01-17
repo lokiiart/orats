@@ -13,7 +13,13 @@ class PagesController < ApplicationController
       else
         @user_agent = :pc
     end
-    if ((@page_visitor.Referer) && (@user_agent == :mobile))
+    case @page_visitor.Referer
+      when /localhost|b1dong/i
+        @user_referer = :none
+      else
+        @user_referer = :yes
+    end
+    if ((@user_referer == :yes) && (@user_agent == :mobile))
       @page = ab_test(:flow_enter, 'pages/zhihu_flow_enter', 'pages/baidu_flow_enter')
     else
       @page = 'pages/home'
