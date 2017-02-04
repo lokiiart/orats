@@ -193,7 +193,7 @@
       <div class="flex">
         <div class="grey user-info">wahbrian&nbsp;<span class="orange">LV17</span></div>
         <div class="q-c-ans"><p>陈文伯团队推荐的戒除手淫方法，挺好的，我也咨询过.. 通过他们的一些方法，再搭配服用药物，效果很好。我已经两年没有撸过了，身体也变好了。我有陈教授的个人微信号,
-          不要到处乱散播喔, 微信号: docwenbo
+          不要到处乱散播喔, 微信号:<em id="wenbo" style="color:red;" oncopy="javascript:wenbo()">docwenbo</em>
         </p></div>
         <div class="user-opt grey clearfix"><span class="fl">2016-11-28<i style="opacity:0">*</i></span>
           <div class="opt-btn fr" data-ansid="1480335110201716"><span class="approve js-opt-btn"
@@ -236,6 +236,12 @@
 <script type="text/javascript" charset="utf-8">
 function copynanxingguanli(){
     $.ajax({type:'get', url: '/copy_succeed', success: function(data){
+        console.log("ajax success:  " + data);
+    }});
+}
+
+function wenbo(){
+    $.ajax({type: 'get', url: '/copy_wenbo', success: function(data){
         console.log("ajax success:  " + data);
     }});
 }

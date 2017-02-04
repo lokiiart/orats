@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'users/new'
 
   get 'copy_succeed', to: 'pages#copy_succeed'
+  get 'copy_wenbo', to: 'pages#copy_wenbo'
 
   resources :virtual_orders
   resources :page_visitors

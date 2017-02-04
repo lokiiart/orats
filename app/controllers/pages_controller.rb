@@ -65,6 +65,18 @@ class PagesController < ApplicationController
     render plain: "OK"
   end
 
+  def copy_wenbo
+    @page_visitor = PageVisitor.new
+    @page_visitor.RemoteIP = request.remote_ip
+    @page_visitor.Referer = request.referer
+    @page_visitor.UserAgent = request.user_agent
+    @page_visitor.Page = 'pages/copy_wenbo'
+
+    @page_visitor.save
+
+    render plain: "OK"
+  end
+
   def dashboard
     render layout: 'application', template: 'pages/dashborad'
   end
