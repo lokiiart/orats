@@ -85,6 +85,7 @@ task :auto_update do
   invoke :'git:ensure_pushed'
   deploy do
     invoke :'git:clone'
+    command %{docker-compose stop}
     command %{docker-compose up --build -d}
     # command 'docker-compose exec --user "$(id -u):$(id -g)" website rails assets:precompile'
     # command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:migrate'
