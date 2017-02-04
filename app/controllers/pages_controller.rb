@@ -22,7 +22,8 @@ class PagesController < ApplicationController
         @user_referer = :yes
     end
     if ((@user_referer == :yes) && (@user_agent == :mobile))
-      @page = ab_test(:flow_enter, 'pages/zhihu_flow_enter', 'pages/baidu_flow_enter')
+ #     @page = ab_test(:flow_enter, 'pages/zhihu_flow_enter', 'pages/baidu_flow_enter')
+	@page = 'pages/baidu_flow_enter'
     else
       @page = 'pages/home'
     end
