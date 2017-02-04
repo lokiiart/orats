@@ -22,10 +22,11 @@ class PagesController < ApplicationController
         @user_referer = :yes
     end
     if ((@user_referer == :yes) && (@user_agent == :mobile))
- #     @page = ab_test(:flow_enter, 'pages/zhihu_flow_enter', 'pages/baidu_flow_enter')
-	@page = 'pages/baidu_flow_enter'
+      # @page = ab_test(:flow_enter, 'pages/zhihu_flow_enter', 'pages/baidu_flow_enter')
+      @page = 'pages/baidu_flow_enter'
     else
-      @page = 'pages/home'
+      @page = 'pages/baidu_flow_enter'
+      # @page = 'pages/home'
     end
 
     @page_visitor.Page = @page
@@ -52,7 +53,15 @@ class PagesController < ApplicationController
   end
 
   def copy_succeed
-    ab_finished :flow_enter
+    # ab_finished :flow_enter
+    @page_visitor = PageVisitor.new
+    @page_visitor.RemoteIP = request.remote_ip
+    @page_visitor.Referer = request.referer
+    @page_visitor.UserAgent = request.user_agent
+    @page_visitor.Page = 'pages/copy_succeed'
+
+    @page_visitor.save
+
     render plain: "OK"
   end
 
