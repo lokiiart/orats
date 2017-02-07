@@ -31,7 +31,6 @@ class PagesController < ApplicationController
 
     @page_visitor.Page = @page
     @page_visitor.save
-    @virtual_order = VirtualOrder.new
     if @page == 'pages/home'
       render layout: 'baidu_layout', template: @page
     else
