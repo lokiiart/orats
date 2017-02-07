@@ -4,7 +4,8 @@ class PageVisitorsController < ApplicationController
   # GET /page_visitors
   # GET /page_visitors.json
   def index
-    @page_visitors = PageVisitor.all
+    # @page_visitors = PageVisitor.all.reverse.page params[:page]
+    @page_visitors = PageVisitor.order(created_at: :desc).page params[:page]
   end
 
   # GET /page_visitors/1
@@ -69,6 +70,6 @@ class PageVisitorsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def page_visitor_params
-      params.require(:page_visitor).permit(:RemoteIP, :Page, :Referer, :UserAgent)
+      params.require(:page_visitor).permit(:RemoteIP, :Page, :Referer, :UserAgent, :page)
     end
 end
