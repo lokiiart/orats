@@ -35,7 +35,7 @@ module PageVisitorsHelper
       when /baidu/i
         if referer =~ /word/
           keyword = referer.sub(/^.*&word=/, "")
-          keyword = keyword.sub(/&.*$/, "")
+          keyword = URI.unescape keyword.sub(/&.*$/, "")
           return "百度, 关键词:#{keyword}"
         else
           return "百度, 关键词: 空"
