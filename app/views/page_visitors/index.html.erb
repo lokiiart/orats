@@ -5,6 +5,7 @@
 <table class="table table-striped">
   <thead>
     <tr>
+      <th>时间</th>
       <th>Remoteip</th>
       <th>Page</th>
       <th>Referer</th>
@@ -16,6 +17,7 @@
   <tbody>
     <% @page_visitors.reverse_each do |page_visitor| %>
       <tr>
+        <td><%= page_visitor.updated_at.localtime %></td>
         <td><%= page_visitor.RemoteIP %></td>
         <td><%= page_visitor.Page %></td>
         <td><%= page_visitor.Referer %></td>
