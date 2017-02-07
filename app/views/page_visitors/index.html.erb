@@ -7,11 +7,11 @@
     <tr>
       <th>日期</th>
       <th>时间</th>
-      <th>Remoteip</th>
-      <th>Page</th>
-      <th>Referer</th>
-      <th>UserAgent</th>
-      <th colspan="3">操作</th>
+      <th>IP</th>
+      <th>页面</th>
+      <th>来源</th>
+      <th>设备</th>
+      <!--<th colspan="3">操作</th>-->
     </tr>
   </thead>
 
@@ -22,11 +22,11 @@
         <td><%= page_visitor.updated_at.strftime("%H:%M:%S") %></td>
         <td><%= page_visitor.RemoteIP %></td>
         <td><%= page_visitor.Page %></td>
-        <td><%= page_visitor.Referer %></td>
+        <td><%=  source page_visitor.Referer %></td>
         <td><%= device page_visitor.UserAgent %></td>
         <td><%= link_to 'Show', page_visitor %></td>
-        <td><%= link_to 'Edit', edit_page_visitor_path(page_visitor) %></td>
-        <td><%= link_to 'Destroy', page_visitor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <!--<td><%= link_to 'Edit', edit_page_visitor_path(page_visitor) %></td>-->
+        <!--<td><%= link_to 'Destroy', page_visitor, method: :delete, data: { confirm: 'Are you sure?' } %></td>-->
       </tr>
     <% end %>
   </tbody>

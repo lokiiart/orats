@@ -15,5 +15,15 @@
   <%= @page_visitor.Referer %>
 </p>
 
+<p>
+  <strong>设备:</strong>
+  <%= @page_visitor.UserAgent %>
+</p>
+
+<p>
+  <strong>时间:</strong>
+  <%= @page_visitor.created_at %>
+</p>
+
 <%= link_to 'Edit', edit_page_visitor_path(@page_visitor) %> |
 <%= link_to 'Back', page_visitors_path %>

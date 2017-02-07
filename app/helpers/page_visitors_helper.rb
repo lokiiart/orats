@@ -29,4 +29,22 @@ module PageVisitorsHelper
         return '未判断'
     end
   end
+
+  def source (referer)
+    case referer
+      when /baidu/i
+        if referer =~ /word/
+          keyword = referer.sub(/^.*&word=/, "")
+          keyword = keyword.sub(/&.*$/, "")
+          return "百度, 关键词:#{keyword}"
+        else
+          return "百度, 关键词: 空"
+        end
+        # get the keyword
+      when nil
+        return '空'
+      else
+        return '不可判断来源'
+    end
+  end
 end
