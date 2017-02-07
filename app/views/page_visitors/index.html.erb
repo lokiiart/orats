@@ -17,7 +17,7 @@
   <tbody>
     <% @page_visitors.reverse_each do |page_visitor| %>
       <tr>
-        <td><%= page_visitor.updated_at.localtime %></td>
+        <td><%= page_visitor.updated_at %></td>
         <td><%= page_visitor.RemoteIP %></td>
         <td><%= page_visitor.Page %></td>
         <td><%= page_visitor.Referer %></td>
