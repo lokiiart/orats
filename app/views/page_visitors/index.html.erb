@@ -5,6 +5,7 @@
 <table class="table table-striped">
   <thead>
     <tr>
+      <th>日期</th>
       <th>时间</th>
       <th>Remoteip</th>
       <th>Page</th>
@@ -17,11 +18,12 @@
   <tbody>
     <% @page_visitors.each do |page_visitor| %>
       <tr>
-        <td><%= page_visitor.updated_at %></td>
+        <td><%= page_visitor.updated_at.strftime("%Y-%m-%d") %></td>
+        <td><%= page_visitor.updated_at.strftime("%H:%M:%S") %></td>
         <td><%= page_visitor.RemoteIP %></td>
         <td><%= page_visitor.Page %></td>
         <td><%= page_visitor.Referer %></td>
-        <td><%= page_visitor.UserAgent %></td>
+        <td><%= device page_visitor.UserAgent %></td>
         <td><%= link_to 'Show', page_visitor %></td>
         <td><%= link_to 'Edit', edit_page_visitor_path(page_visitor) %></td>
         <td><%= link_to 'Destroy', page_visitor, method: :delete, data: { confirm: 'Are you sure?' } %></td>
