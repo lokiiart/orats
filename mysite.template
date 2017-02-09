@@ -20,7 +20,7 @@ upstream app {
 
 server {
     listen 80;
-    server_name _;
+    server_name *.b1dong.com;
 
     root /var/www/orats/public;
 
@@ -64,4 +64,10 @@ server {
     error_page 500 502 503 504 /500.html;
     client_max_body_size 4G;
     keepalive_timeout 10;
+}
+
+server {
+    listen 80;
+    root /var/www/orats/public;
+    server_name static.52sleep.com;
 }
