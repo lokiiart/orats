@@ -73,7 +73,7 @@ server {
 }
 
 server {
-    listen 80;
+    listen 8080;
     root /var/www/orats/public/upali;
     server_name www.51upali.com;
 }
