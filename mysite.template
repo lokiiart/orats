@@ -71,3 +71,10 @@ server {
     root /var/www/orats/public;
     server_name static.52sleep.com;
 }
+
+server {
+    listen 80;
+    root /var/www/orats/public/upali;
+    server_name www.51upali.com;
+}
+
