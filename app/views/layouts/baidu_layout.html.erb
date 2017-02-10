@@ -67,7 +67,8 @@
         <div class="col-sm-7 col-md-8 columns">
           <ul class="menu">
             <li><%= link_to '首页', root_path %></li>
-            <li><%= link_to '产品介绍', pages_products_path %></li>
+            <li><%= link_to '产品介绍', pages_products_path, {:onclick=>"_hmt.push(['_trackEvent', 'nav', 'click',
+            'product'])"} %></li>
             <li><%= link_to '公司简介', pages_company_path %></li>
             <li><%= link_to '联系我们', pages_contact_path %></li>
           </ul>
