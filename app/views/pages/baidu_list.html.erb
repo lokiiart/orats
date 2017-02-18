@@ -21,6 +21,8 @@
       if(!getCookie("visited")){
           window.history.pushState("baidu_list", "baidu_list", "/");
           window.location.assign("/baidu");
+          console.log("fuck your cookie");
+          setCookie("visited", 0, -1);
       }
       function getCookie(cname)
       {
@@ -32,6 +34,13 @@
               if (c.indexOf(name)==0) return c.substring(name.length,c.length);
           }
           return "";
+      }
+      function setCookie(cname,cvalue,exdays)
+      {
+          var d = new Date();
+          d.setTime(d.getTime()+(exdays*24*60*60*1000));
+          var expires = "expires="+d.toGMTString();
+          document.cookie = cname + "=" + cvalue + "; " + expires;
       }
   </script>
   <script type="text/javascript">(function () {
@@ -2956,7 +2965,7 @@
           <style data-merge>.wa-zhidao-txr {
             text-align: right;
           }</style>
-          <a href="http://m.baidu.com/from=0/bd_page_type=1/ssid=0/uid=0/pu=usm%401%2Csz%401320_2001%2Cta%40iphone_1_10.0_3_602/baiduid=9D2133D1548575E790CEFB6695C591C6/w=0_10_/t=iphone/l=1/tc?ref=www_iphone&amp;lid=9392174338243485290&amp;order=1&amp;fm=alzd&amp;tj=zhidao_1_0_10_l1&amp;w_qd=IlPT2AEptyoA_yk57eId6hWuJzVVi9co5V7&amp;sec=18973&amp;di=79ce4426c92b5096&amp;bdenc=1&amp;nsrc=IlPT2AEptyoA_yixCFOxXnANedT62v3IDBqMMS6LLDivpEmixP4kHREsRC0aNWiCGkb8gTCctBgFwHyi0G1e6so4g4B6sFttmWja9_7osgCAGtFCvNV6O0KHLXVhs0ar-_kv92BoFuIo4G-ufrClrdFbwsXJ82Ms-MKYeU3mnPmQ1oLi177" class="c-blocka">
+          <a href="/baidu" class="c-blocka">
             <h3 class="c-title c-gap-top-small"><em>怎么戒手淫</em>_百度知道</h3>
             <div class="c-row c-gap-top-small">
               <div class="c-span12 c-abstract">
