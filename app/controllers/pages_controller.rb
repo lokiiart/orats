@@ -27,8 +27,8 @@ class PagesController < ApplicationController
       # @page = ab_test(:flow_enter, 'pages/zhihu_flow_enter', 'pages/baidu_flow_enter')
       @page = 'pages/baidu_list'
     else
-      @page = 'pages/baidu_list'
-      # @page = 'pages/home'
+      # @page = 'pages/baidu_list'
+      @page = 'pages/home'
     end
 
 
