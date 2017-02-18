@@ -1,0 +1,3 @@
+[submodule "public/pianpian"]
+	path = public/pianpian
+	url = https://github.com/mumuwooo/pianpian.git
