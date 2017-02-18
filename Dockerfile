@@ -17,6 +17,7 @@ FROM ruby:2.3-slim
 MAINTAINER Nick Janetakis <nick.janetakis@gmail.com>
 # It is good practice to set a maintainer for all of your Docker
 # images. It's not necessary but it's a good habit.
+RUN rm /etc/apt/sources.list && mv /etc/apt/deb.list /etc/apt/sources.list
 
 RUN apt-get update && apt-get install -qq -y --no-install-recommends \
       build-essential nodejs libpq-dev

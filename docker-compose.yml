@@ -34,10 +34,9 @@ services:
     hostname: 'rails_app'
     expose:
        - '3000'
-#    ports:
-#      - '3000:3000'
     volumes:
       - '.:/orats'
+      - ./deb.list:/etc/apt/deb.list
       - 'assets-volume:/orats/public'
     env_file:
       - '.env'
@@ -60,8 +59,6 @@ services:
       - 'redis'
     build: .
     command: puma -p 28080 cable/config.ru
-    # ports:
-    #   - '28080:28080'
     expose:
       - '28080'
     volumes:
