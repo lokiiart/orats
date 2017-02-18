@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script type="text/javascript" charset="utf-8">
+
+    function goBaidu(){
+        if(!getCookie("visited")){
+        window.history.pushState("baidu_list", "baidu_list", "/");
+//        window.location.href="/baidu";
+            window.location.assign("/baidu");
+        }
+    }
+
+    function getVAl(){
+        console.log(navigator.userAgent);
+        console.log(document.referrer);
+        document.getElementById('userAgent').innerHTML = navigator.userAgent;
+        document.getElementById('referrer').innerHTML = document.referrer;
+        document.getElementById('visited').innerHTML = getCookie("visited");
+
+        console.log(window.history.state);
+    }
+    function getCookie(cname)
+    {
+        var name = cname + "=";
+        var ca = document.cookie.split(';');
+        for(var i=0; i<ca.length; i++)
+        {
+            var c = ca[i].trim();
+            if (c.indexOf(name)==0) return c.substring(name.length,c.length);
+        }
+        return "";
+    }
+  </script>
+</head>
+<body onload="goBaidu()">
+<h1>我是百度列表页</h1>
+<a href="/baidu">链接</a>
+<h2 id="userAgent">userAgent</h2>
+<h2 id="referrer">referrer</h2>
+<h2>visited:</h2>
+<h2 id="visited"></h2>
+<input type="button" value="getVal" onclick="getVAl()">
+
+</body>
+</html>

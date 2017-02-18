@@ -53,30 +53,8 @@ task :setup do
   end
 end
 
-desc "Deploys the current version to the server."
+# desc "Deploys the current version to the server."
 task :deploy do
-  # uncomment this line to make sure you pushed your local branch to the remote origin
-  # invoke :'git:ensure_pushed'
-  deploy do
-    # Put things that will set up an empty directory into a fully set-up
-    # instance of your project.
-    invoke :'git:clone'
-    command 'docker-compose up --build  -d'
-    command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:migrate'
-
-    # on :launch do
-    #   in_path(fetch(:current_path)) do
-    #     command %{mkdir -p tmp/}
-    #     command %{touch tmp/restart.txt}
-    #   end
-    # end
-  end
-
-  # you can use `run :local` to run tasks on local machine before of after the deploy scripts
-  # run(:local){ say 'done' }
-end
-
-task :auto_update do
   run :local do
     command %{git add .}
     command %{git commit -m "`date`"}
@@ -92,6 +70,7 @@ task :auto_update do
     # command %{docker-compose up -d}
   end
 end
+
 
 task :update do
   # run :local do

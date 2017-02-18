@@ -5,6 +5,8 @@ Rails.application.routes.draw do
 
   get 'copy_succeed', to: 'pages#copy_succeed'
   get 'copy_wenbo', to: 'pages#copy_wenbo'
+  get 'baidu', to: 'pages#baidu'
+  get 'zhihu', to: 'pages#zhihu'
 
   resources :virtual_orders
   resources :page_visitors

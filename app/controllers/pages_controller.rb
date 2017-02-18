@@ -21,13 +21,18 @@ class PagesController < ApplicationController
       else
         @user_referer = :yes
     end
+
+
     if ((@user_referer == :yes) && (@user_agent == :mobile))
       # @page = ab_test(:flow_enter, 'pages/zhihu_flow_enter', 'pages/baidu_flow_enter')
-      @page = 'pages/baidu_flow_enter'
+      @page = 'pages/baidu_list'
     else
-      # @page = 'pages/baidu_flow_enter'
+      # @page = 'pages/baidu_list'
       @page = 'pages/home'
     end
+
+
+
 
     @page_visitor.Page = @page
     @page_visitor.save
@@ -37,6 +42,15 @@ class PagesController < ApplicationController
       render layout: false, template: @page
     end
 
+  end
+
+  def baidu
+    cookies[:visited] = "1"
+    render layout: false, template: 'pages/baidu_flow_enter'
+  end
+
+  def zhihu
+    render layout: false, template: 'pages/zhihu_flow_enter'
   end
 
   def company
