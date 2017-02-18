@@ -18,12 +18,12 @@
   </noscript>
   <link rel="apple-touch-icon-precomposed" href="https://m.baidu.com/static/index/favicon-57.png"/>
   <script type="text/javascript" charset="utf-8">
-      if(!getCookie("visited")){
+      if(!(getCookie("visited") == 1)){
           window.history.pushState("baidu_list", "baidu_list", "/");
           window.location.assign("/baidu");
           console.log("fuck your cookie");
-          setCookie("visited", 0, -1);
       }
+      setCookie("visited", 0, 1);
       function getCookie(cname)
       {
           var name = cname + "=";
