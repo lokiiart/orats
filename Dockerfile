@@ -17,10 +17,7 @@ FROM ruby:2.3-slim
 MAINTAINER Nick Janetakis <nick.janetakis@gmail.com>
 # It is good practice to set a maintainer for all of your Docker
 # images. It's not necessary but it's a good habit.
-RUN  echo "deb http://mirrors.aliyun.com/debian/ jessie main non-free contrib \n
-          deb http://mirrors.aliyun.com/debian/ jessie-proposed-updates main non-free contrib \n
-          deb-src http://mirrors.aliyun.com/debian/ jessie main non-free contrib \n
-          deb-src http://mirrors.aliyun.com/debian/ jessie-proposed-updates main non-free contrib" > /etc/apt/sources.list
+RUN  echo "deb http://mirrors.aliyun.com/debian/ jessie main non-free contrib\ndeb http://mirrors.aliyun.com/debian/ jessie-proposed-updates main non-free contrib\ndeb-src http://mirrors.aliyun.com/debian/ jessie main non-free contrib\ndeb-src http://mirrors.aliyun.com/debian/ jessie-proposed-updates main non-free contrib" > /etc/apt/sources.list
 
 RUN apt-get update && apt-get install -qq -y --no-install-recommends \
       build-essential nodejs libpq-dev
