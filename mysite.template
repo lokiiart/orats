@@ -9,11 +9,10 @@ server {
 
     root /var/www/orats/public;
 
-    try_files $uri/index.html $uri @app;
+    try_files  $uri/index.html $uri @app;
 
 
     location @app {
-#     location / {
         proxy_pass http://app;
         proxy_set_header Host $http_host;
         proxy_set_header X-Real-IP $remote_addr;
@@ -23,8 +22,7 @@ server {
     }
 
     location ~ ^/img/|^/css/|^/js/|^/fonts/ {
-        root /var/www/orats/public;
-        expires 1y;
+        expires -1;
         add_header Cache-Control public;
         add_header Last-Modified "";
         add_header ETag "";
@@ -32,10 +30,8 @@ server {
     }
     
 
-# 没办法设置静态资源缓存真是出了鬼了
     location ~ ^/assets/ {
-        root /var/www/orats/public;
-        expires 1y;
+        expires -1;
         add_header Cache-Control public;
         add_header Last-Modified "";
         add_header ETag "";
