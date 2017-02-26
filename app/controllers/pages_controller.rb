@@ -51,6 +51,10 @@ class PagesController < ApplicationController
     render layout: false, template: 'pages/zhihu_flow_enter'
   end
 
+  def upali
+    render layout: false, template: 'pages/upali'
+  end
+
   def company
     render layout: 'baidu_layout'
   end
