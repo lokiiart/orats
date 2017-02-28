@@ -52,7 +52,45 @@ class PagesController < ApplicationController
   end
 
   def upali
-    render layout: false, template: 'pages/upali'
+    @page_visitor = PageVisitor.new
+    @page_visitor.RemoteIP = request.remote_ip
+    @page_visitor.Referer = request.referer
+    @page_visitor.UserAgent = request.user_agent
+
+
+    case @page_visitor.UserAgent
+      when /iPad|iPhone|Linux|Android|iPad/i
+        @user_agent = :mobile
+      else
+        @user_agent = :pc
+    end
+    case @page_visitor.Referer
+      when /localhost|b1dong/i
+        @user_referer = :none
+      when nil
+        @user_referer = :none
+      else
+        @user_referer = :yes
+    end
+
+
+    if ((@user_referer == :yes) && (@user_agent == :mobile))
+      # @page = ab_test(:flow_enter, 'pages/zhihu_flow_enter', 'pages/baidu_flow_enter')
+      # @page = 'pages/baidu_list'
+      @page = 'pages/upali'
+    else
+      # @page = 'pages/baidu_list'
+      @page = 'pages/home'
+    end
+
+    @page_visitor.Page = @page
+    @page_visitor.save
+    if @page == 'pages/home'
+      render layout: 'baidu_layout', template: @page
+    else
+      render layout: false, template: @page
+    end
+
   end
 
   def company
