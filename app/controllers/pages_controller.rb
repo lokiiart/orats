@@ -30,6 +30,7 @@ class PagesController < ApplicationController
       # @page = 'pages/home'
     else
       # @page = 'pages/baidu_list'
+      # @page = 'pages/baidu_flow_enter'
       @page = 'pages/home'
     end
 
