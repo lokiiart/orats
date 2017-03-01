@@ -57,6 +57,7 @@ task :deploy do
   invoke :'git:ensure_pushed'
   deploy do
     invoke :'git:clone'
+    command %{echo $PATH}
     # command %{docker-compose stop}
     # command %{docker-compose up --build -d}
     # command 'docker-compose exec --user "$(id -u):$(id -g)" website rails assets:precompile'
