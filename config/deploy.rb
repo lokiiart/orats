@@ -45,12 +45,6 @@ end
 task :setup do
   # command %{rbenv install 2.3.0}
   command %{mkdir -p "/root/orats"}
-  deploy do
-    invoke :'git:clone'
-    command 'docker-compose up --build  -d'
-    command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:reset' # 重置数据库了，不要乱用
-    command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:migrate'
-  end
 end
 
 # desc "Deploys the current version to the server."
