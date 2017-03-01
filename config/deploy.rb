@@ -58,8 +58,8 @@ task :deploy do
   deploy do
     invoke :'git:clone'
     command %{echo $PATH}
-    # command %{docker-compose stop}
-    # command %{docker-compose up --build -d}
+    command %{/opt/bin/docker-compose stop}
+    command %{/opt/bin/docker-compose up --build -d}
     # command 'docker-compose exec --user "$(id -u):$(id -g)" website rails assets:precompile'
     # command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:migrate'
     # command %{docker-compose up -d}
