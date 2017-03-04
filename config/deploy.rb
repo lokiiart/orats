@@ -68,16 +68,19 @@ end
 
 
 task :update do
-  # run :local do
-  #   command %{git push -u origin master}
-  # end
+  run :local do
+    command %{git add .}
+    command %{git commit -m "`date`"}
+    command %{git push -u origin master}
+  end
   invoke :'git:ensure_pushed'
   deploy do
     invoke :'git:clone'
-    command %{docker-compose up --build -d}
-    command 'docker-compose exec --user "$(id -u):$(id -g)" website rails assets:precompile'
-    command 'docker-compose exec --user "$(id -u):$(id -g)" website rails db:migrate'
-    command %{docker-compose up -d}
+    command %{/opt/bin/docker-compose stop}
+    command %{/opt/bin/docker-compose up --build -d}
+    command %{/opt/bin/docker-compose exec  website rails assets:precompile}
+    command %{/opt/bin/docker-compose exec  website rails db:migrate}
+    command %{/opt/bin/docker-compose up -d}
   end
 end
 # For help in making your deploy script, see the Mina documentation:
