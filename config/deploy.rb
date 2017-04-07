@@ -11,7 +11,7 @@ require 'mina/git'
 #   branch       - Branch name to deploy. (needed by mina/git)
 
 set :application_name, 'orats'
-set :domain, 'b1dong.com'
+set :domain, 'test.pin-pin.com'
 set :deploy_to, '/root/orats'
 set :repository, 'https://github.com/lokiiart/orats.git'
 set :branch, 'master'
